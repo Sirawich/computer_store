@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('user.store') }}">
                         @csrf
                         <div class="mx-auto h5">Member Information</div>
                         <div class="form-group row">
@@ -15,7 +15,6 @@
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -23,7 +22,6 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -37,7 +35,6 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
@@ -45,6 +42,19 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+                            <div class="col-md-6">
+                                <select class="custom-select" id="input-role" name="role">
+                                    <option selected>Choose...</option>
+                                    @foreach($roles as $role)
+                                        <option value="{{$role->id}}">{{$role->name}}</option>
+                                    @endforeach
+                                  </select>
+                            </div>
+                        </div>
+
                         <hr>
                         <div class="mx-auto h5">General Information</div>
                         <div class="form-group row">
@@ -98,6 +108,7 @@
                     </form>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

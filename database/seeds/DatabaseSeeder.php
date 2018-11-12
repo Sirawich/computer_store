@@ -11,6 +11,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class,1)->create(['email'=>'root@root']);
+        factory(App\User::class,10)->create();
+
+        for($i=0; $i<2; $i++){
+            $role =['User','Admin'];
+            factory(App\Role::class)->create([
+                'id'=>($i+1),
+                'name'=>$role[$i],
+            ]);
+        }
     }
 }
