@@ -11,6 +11,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        factory(App\User::class,10)->create();
+
+        for($i=0; $i<2; $i++){
+            $role =['User','Admin'];
+            factory(App\Role::class)->create([
+                'id'=>($i+1),
+                'name'=>$role[$i],
+            ]);
+        }
     }
 }
