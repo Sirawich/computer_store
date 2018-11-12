@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{route('home')}}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -43,28 +43,22 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            <li class="nav-item">
-                                <!-- @if (Route::has('register'))
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                @endif -->
-                            </li>
                         @else
+                            @if(Auth::user()->isAdmin())
                             <li class="nav-item dropdown">
                                  <a id="member" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Member
                                 </a>
                                 <div class="dropdown-menu dropdown-menu" aria-labelledby="member">
-                                    <a class="dropdown-item">
+                                    <a class="dropdown-item" href="{{route('user.create')}}">
                                         Add Member
                                     </a>
-                                    <a class="dropdown-item">
+                                    <a class="dropdown-item"  href="{{route('user.index')}}">
                                        All Member
-                                    </a>
-                                    <a class="dropdown-item">
-                                      Role Member
                                     </a>
                                 </div>
                             </li>
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -80,7 +74,6 @@
                                     </form>
                                 </div>
                             </li>
-                     
                         @endguest
                     </ul>
                 </div>

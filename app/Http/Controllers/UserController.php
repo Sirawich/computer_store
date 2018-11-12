@@ -12,6 +12,11 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 class UserController extends Controller
 {
+
+    function __construct()
+    {
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -79,7 +84,7 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-       $user->update($request->only('email','name','address','phone'));
+        $user->update($request->only('email','name','address','phone'));
        return redirect('/user')->with('success','Your User has been update');
     }
 

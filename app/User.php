@@ -28,10 +28,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
     public function role()
     {
-
         return $this->hasOne('App\Role');
     }
 
+    public function isAdmin(){
+        return $this->role_id == 2;
+    }
 }
