@@ -37,4 +37,9 @@ class User extends Authenticatable
     public function isAdmin(){
         return $this->role_id == 2;
     }
+
+    public function promotion(){
+        return $this->hasMany(Promotion::class);
+    }
+
 }
