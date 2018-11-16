@@ -29,7 +29,7 @@
                             <tbody>
                             @foreach($promotions as $promotion)
                                 <td>{{$promotion->id}}</td>
-                                <td>{{$promotion->title}}</td>
+                                <td><a href="{{ $promotion->url }}">{{$promotion->title}}</a></td>
                                 <td>{{str_limit($promotion->body,100)}}</td>
                                 <td>{{$promotion->views}}</td>
                                 <td>{{$promotion->user->name}}</td>

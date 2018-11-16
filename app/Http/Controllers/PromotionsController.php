@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PromotionReqeust;
 use App\Promotion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PromotionsController extends Controller
 {
@@ -50,7 +51,8 @@ class PromotionsController extends Controller
      */
     public function show(Promotion $promotion)
     {
-        //
+        $promotion->increment('views');
+        return View('promotion.show',compact('promotion'));
     }
 
     /**
@@ -73,7 +75,8 @@ class PromotionsController extends Controller
      */
     public function update(PromotionReqeust $request, Promotion $promotion)
     {
-        $promotion->update($request->only('title','body'));
+        $promotion->user_id = Auth::id();
+        $promotion->update($request->only('title','body','user_id'));
         return redirect('/promotion')->with('success',"Your promotion has been update");
     }
 
