@@ -58,6 +58,19 @@
                                     </a>
                                 </div>
                             </li>
+                                <li class="nav-item dropdown">
+                                    <a id="member" class="nav-link dropdown-toggle" href="promotion.index" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        Promotion
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu" aria-labelledby="member">
+                                        <a class="dropdown-item" href="{{route('promotion.create')}}">
+                                            Add Promotion
+                                        </a>
+                                        <a class="dropdown-item"  href="{{route('promotion.index')}}">
+                                            All Promotion
+                                        </a>
+                                    </div>
+                                </li>
                             @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

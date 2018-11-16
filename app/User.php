@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -35,6 +34,12 @@ class User extends Authenticatable
     }
 
     public function isAdmin(){
+
         return $this->role_id == 2;
     }
+
+    public function promotion(){
+        return $this->hasMany(Promotion::class);
+    }
+
 }
