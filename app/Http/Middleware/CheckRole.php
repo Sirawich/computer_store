@@ -15,7 +15,8 @@ class CheckRole
      */
     public function handle($request, Closure $next)
     {
-        if (!auth()->user()->isAdmin()) {
+
+        if (Auth::guest() || !auth()->user()->isAdmin()) {
             return redirect('/home');
         }
         return $next($request);
