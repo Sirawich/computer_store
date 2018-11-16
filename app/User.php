@@ -30,9 +30,9 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->hasOne('App\Role');
+        return $this->belongsTo(Role::class);
     }
-
+    
     public function isAdmin(){
 
         return $this->role_id == 2;
@@ -42,4 +42,7 @@ class User extends Authenticatable
         return $this->hasMany(Promotion::class);
     }
 
+    public function tracking(){
+        return $this->hasMany(Tracking::class);
+    }
 }

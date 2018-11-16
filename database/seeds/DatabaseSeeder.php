@@ -9,16 +9,8 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        factory(App\User::class,3)->create();
+    public function run(){
 
-        factory(App\User::class, 1)->create(['role_id'=>2])->each(function($u){
-            $u->promotion()
-                ->saveMany(
-                    factory(App\Promotion::class,rand(1,5))->make()
-                );
-        });
         for($i=0; $i<2; $i++){
             $role =['User','Admin'];
             factory(App\Role::class)->create([
@@ -26,6 +18,29 @@ class DatabaseSeeder extends Seeder
                 'name'=>$role[$i],
             ]);
         }
+
+        factory(App\User::class, 1)->create(['role_id'=>2])->each(function($u){
+            $u->promotion()
+                ->saveMany(
+                    factory(App\Promotion::class,rand(1,5))->make()
+                );
+        });
+
+        for($i=0; $i<4; $i++){
+            $status =['logged_in','working','complete','receive'];
+            factory(App\StatusProduct::class)->create([
+                'id'=>($i+1),
+                'name'=>$status[$i],
+            ]);
+        }
+
+        factory(App\User::class,3)->create(['role_id'=>1])->each(function ($u){
+            $u->tracking()
+                ->saveMany(
+                    factory(App\Tracking::class,rand(1,3))->make()
+                );
+        });
+
 
 
     }
