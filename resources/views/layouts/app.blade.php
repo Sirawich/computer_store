@@ -95,6 +95,9 @@
             </div>
         </nav>
 
+        <main class="">
+            @yield('home')
+        </main>
         <main class="py-4">
             @yield('content')
         </main>

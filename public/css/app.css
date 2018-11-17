@@ -10478,3 +10478,12 @@ th {
   vertical-align: middle;
 }
 
+.bg-computer {
+  background-image: url("https://capitalbay.com.my/wp-content/uploads/2018/01/isaac-benhesed-249427.jpg");
+  background-size: 100% 100%;
+}
+
+.marketing {
+  margin: 3rem 0;
+}
+
