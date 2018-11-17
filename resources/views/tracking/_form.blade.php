@@ -3,17 +3,23 @@
 <div class="form-group">
     <label for="status" class="">{{ __('User') }}</label>
     <div>
-        <select class="custom-select" id="status-role" name="user_id">
-            <option selected>Choose...</option>
+        <select class="custom-select  {{ $errors->has('user_id') ? 'is-invalid' : '' }}" id="user_id" name="user_id">
+            <option value="0">Choose...</option>
             @foreach($users as $user)
                 <option value="{{$user->id}}" @if($user->id==$tracking->user_id) {{"selected "}} @endif>{{$user->name}}</option>
             @endforeach
         </select>
+        @if ($errors->has('user_id'))
+            <div class="invalid-feedback ">
+                <strong>{{$errors->first('user_id')}}</strong>
+            </div>
+        @endif
     </div>
 </div>
+
 <div class="form-group">
     <label for="product-title">Product</label>
-    <input type="text" value="{{ old('tracking',$tracking->product) }}" name="product" id="product-title" class="form-control {{ $errors->has('tracking') ? 'is-invalid' : '' }}">
+    <input type="text" value="{{ old('tracking',$tracking->product) }}" name="product" id="product-title" class="form-control {{ $errors->has('product') ? 'is-invalid' : '' }}">
     @if ($errors->has('product'))
         <div class="invalid-feedback">
             <strong>{{$errors->first('product')}}</strong>

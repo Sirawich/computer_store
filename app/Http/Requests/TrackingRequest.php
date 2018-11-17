@@ -24,7 +24,10 @@ class TrackingRequest extends FormRequest
     public function rules()
     {
         return [
+            'user_id'=>'required|not_in:0',
             'product'=>'required',
+            'detail'=>'required',
+            'price'=>'numeric',
         ];
     }
 }

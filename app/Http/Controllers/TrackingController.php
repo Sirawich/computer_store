@@ -40,7 +40,7 @@ class TrackingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TrackingRequest $request)
     {
         $request['code'] = $this->getCode();
         Tracking::create($request->all());
