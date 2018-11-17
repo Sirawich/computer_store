@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('user','UserController')->middleware('role');
 Route::resource('promotion','PromotionsController')->middleware('role')->except('show');
 Route::get('/promotion/{slug}','PromotionsController@show')->name('promotion.show');
+Route::resource('tracking','TrackingController')->middleware('role');
