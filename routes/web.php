@@ -22,7 +22,7 @@ Route::get('/home/search', 'HomeController@search')->name('home.search');
 Route::get('/home/tracking', 'HomeController@tracking')->name('home.tracking');
 Route::resource('user','UserController')->middleware('role');
 Route::resource('promotion','PromotionsController')->middleware('role')->except('show');
-Route::get('/promotion/{slug}','PromotionsController@show')->name('promotion.show');
+Route::get('/promotion/{promotion}','PromotionsController@show')->name('promotion.show');
 Route::resource('tracking','TrackingController')->middleware('role')->except('show');
 Route::get('/tracking/{slug}','TrackingController@show')->name('tracking.show');
 

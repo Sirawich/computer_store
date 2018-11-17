@@ -25,9 +25,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-       Route::bind('slug',function ($slug){
+       Route::bind('promotion',function ($slug){
             return Promotion::where('slug',$slug)->first() ?? abort(404);
-
        });
        Route::bind('slug',function ($slug){
             return Tracking::where('slug',$slug)->first() ?? abort(404);
