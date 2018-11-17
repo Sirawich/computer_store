@@ -18,6 +18,7 @@ class AddProfileUser extends Migration
             $table->text("address");
             $table->string("phone");
             $table->integer("role_id")->default(1);
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('CASCADE');
         });
     }
 
