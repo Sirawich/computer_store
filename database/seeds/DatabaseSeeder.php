@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         });
 
         for($i=0; $i<4; $i++){
-            $status =['logged_in','working','complete','receive'];
+            $status =['รับเข้าระบบ','กำลังซ่อม','ซ่อมเสร็จแล้ว','มารับแล้ว'];
             factory(App\StatusProduct::class)->create([
                 'id'=>($i+1),
                 'name'=>$status[$i],

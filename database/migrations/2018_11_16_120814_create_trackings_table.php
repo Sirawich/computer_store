@@ -20,10 +20,10 @@ class CreateTrackingsTable extends Migration
             $table->text('detail');
             $table->unsignedInteger('price')->default(0);
             $table->unsignedInteger('user_id');
-            $table->dateTime('complete_at')->nullable();;
-            $table->dateTime('receive_at')->nullable();;
+            $table->timestamp('complete_at')->nullable();;
+            $table->timestamp('receive_at')->nullable();;
             $table->timestamps();
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
 
         });

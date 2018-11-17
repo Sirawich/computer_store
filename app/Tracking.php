@@ -6,27 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tracking extends Model
 {
+    protected $fillable = ['product', 'code','detail','price','user_id','note','status_id','receive_at','complete_at'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
     public function status_product()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(StatusProduct::class,'status_id');
     }
     public function getStatusAttribute()
     {
-        if ($this->status_id == 1){
-            return "รับเข้าสู่ระบบ";
-        }elseif ($this->status_id == 2){
-            return "อยู่ระหว่างกรซ่อม";
-        }elseif ($this->status_id == 3){
-            return "ซ่อมเสร็จแล้ว";
-        }elseif ($this->status_id == 3){
-            return "มารับของแล้ว";
-        }
+        return $this->status_product->name;
     }
-
     public function getCreatedDateAttribute()
     {
         return $this->created_at->format('d/m/Y');
@@ -35,12 +28,18 @@ class Tracking extends Model
     {
         return $this->updated_at->format('d/m/Y');
     }
-    public function getCompleteAtAttribute()
+    public function getCompleteAttribute()
     {
-        return "16/11/2018";
+        if (!empty($this->complete_at)) {
+            return $this->complete_at;
+        }
+        return "-";
     }
-    public function getReceiveAtAttribute()
+        public function getReceiveAttribute()
     {
-        return "16/11/2018";
+        if (!empty($this->receive_at)) {
+            return $this->receive_at;
+        }
+        return "-";
     }
 }
