@@ -24,6 +24,7 @@ class CreateTrackingsTable extends Migration
             $table->timestamp('receive_at')->nullable();;
             $table->timestamps();
             $table->text('note')->nullable();
+            $table->string('slug')->unique();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
 
         });

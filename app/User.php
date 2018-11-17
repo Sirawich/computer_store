@@ -37,7 +37,9 @@ class User extends Authenticatable
 
         return $this->role_id == 2;
     }
-
+    public function isUser(){
+        return $this->role_id == 1;
+    }
     public function promotion(){
         return $this->hasMany(Promotion::class);
     }

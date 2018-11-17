@@ -19,10 +19,10 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        factory(App\User::class, 1)->create(['role_id'=>2])->each(function($u){
+        factory(App\User::class)->create(['role_id'=>2])->each(function($u){
             $u->promotion()
                 ->saveMany(
-                    factory(App\Promotion::class,rand(1,5))->make()
+                    factory(App\Promotion::class,rand(6,10))->make()
                 );
         });
 
