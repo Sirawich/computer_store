@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Promotion;
+use App\Tracking;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,5 +27,13 @@ class HomeController extends Controller
     {
         $promotions = Promotion::paginate(6);
         return view('home',compact('promotions'));
+    }
+
+    public function search(Request $request){
+        $tracking = Tracking::where('code',$request['code'])->first();
+        if (!empty($tracking)){
+            return redirect($tracking->url);
+        }
+        return redirect('/home')->with('fail',"None of this code exists.");
     }
 }

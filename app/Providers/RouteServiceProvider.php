@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Promotion;
+use App\Tracking;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -26,8 +27,11 @@ class RouteServiceProvider extends ServiceProvider
     {
        Route::bind('slug',function ($slug){
             return Promotion::where('slug',$slug)->first() ?? abort(404);
-       });
 
+       });
+       Route::bind('slug',function ($slug){
+            return Tracking::where('slug',$slug)->first() ?? abort(404);
+       });
         parent::boot();
     }
 

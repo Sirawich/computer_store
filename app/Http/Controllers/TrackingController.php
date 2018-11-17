@@ -56,7 +56,7 @@ class TrackingController extends Controller
      */
     public function show(Tracking $tracking)
     {
-        //
+       return View('tracking.show',compact('tracking'));
     }
 
     /**

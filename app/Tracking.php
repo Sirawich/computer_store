@@ -42,4 +42,13 @@ class Tracking extends Model
         }
         return "-";
     }
+    public function setCodeAttribute($value)
+    {
+        $this->attributes['code'] = $value;
+        $this->attributes['slug'] = str_slug($value);
+    }
+    public function getUrlAttribute()
+    {
+        return route("tracking.show", $this->slug);
+    }
 }

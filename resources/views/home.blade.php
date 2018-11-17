@@ -12,6 +12,7 @@
             </div>
         </div>
     </div>
+
     <!-- /Jumbotron -->
     <!--Message-->
     <div class="container ">
@@ -21,14 +22,19 @@
                     <h1>Search Product</h1>
                     <h5>Find Product by your code</h5>
                     <hr>
-                    <form class="form">
+                    <form class="form" action="{{route('home.search')}}" method="get">
                         <div class="input-group">
-                            <input type="text" id="code" class="form-control" size="50" placeholder="Your Code">
+                            <input type="text" name="code" id="code" class="form-control" size="50" placeholder="Your Code">
                             <span class="input-group-btn">
-                        <button type="button" class="btn btn-danger">SEARCH</button>
+                        <button type="submit" class="btn btn-danger">SEARCH</button>
                     </span>
                         </div>
                     </form>
+                    @if (session('fail'))
+                        <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                            <strong>Fail!</strong> {{session('fail')}}
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

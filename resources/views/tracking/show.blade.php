@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -6,32 +7,25 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-item-center">
-                            <h2>ALL Promotion</h2>
-                            <div class="ml-auto">
-                                <a href="{{route('tracking.create')}}" class="btn btn-outline-secondary">Create Promotion</a>
-                            </div>
-                        </div> </div>
-                    @include('tracking._message')
+                            <h2>Code : {{$tracking->code}}</h2>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <table class="table table-striped ">
-                            <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Code</th>
-                                <th scope="col">สมาชิกเจ้าของ</th>
-                                <th scope="col">ชื่อสินค้า</th>
-                                <th scope="col">ลักษณะอาการ</th>
-                                <th scope="col">สถานะ</th>
-                                <th scope="col">ราคา</th>
-                                <th scope="col">หมายเหตุ</th>
-                                <th scope="col">วันที่</th>
-                                <th scope="col" colspan="2">Action</th>
-                            </tr>
-                            </thead>
+                            <tread>
+                                <tr>
+                                    <th scope="col">Code</th>
+                                    <th scope="col">สมาชิกเจ้าของ</th>
+                                    <th scope="col">ชื่อสินค้า</th>
+                                    <th scope="col">ลักษณะอาการ</th>
+                                    <th scope="col">สถานะ</th>
+                                    <th scope="col">ราคา</th>
+                                    <th scope="col">หมายเหตุ</th>
+                                    <th scope="col">วันที่</th>
+                                </tr>
+                            </tread>
                             <tbody>
-                            @foreach($trackings as $tracking)
-                                <td scope="row">{{$tracking->id}}</td>
-                                <td><a href="{{ $tracking->url }}">{{$tracking->code}}</a></td>
+                                <td>{{$tracking->code}}</td>
                                 <td>{{$tracking->user->name}}</td>
                                 <td>{{$tracking->product}}</td>
                                 <td>{{str_limit($tracking->detail,50)}}</td>
@@ -43,30 +37,13 @@
                                         Click
                                     </button>
                                 </td>
-                                <td style="padding-right:inherit" ><a href="{{route('tracking.edit',$tracking->id)}}" class="btn btn-warning">Edit</a> </td>
-                                    <td>
-                                    <form action="{{route('tracking.destroy',$tracking->id)}}" method="post">
-                                        @method('DELETE')
-                                        @csrf
-                                        <input name="_method" type="hidden" value="DELETE">
-                                        <button class="btn btn-danger" type="submit" onClick="return confirm('Are you sure?')">Delete</button>
-                                    </form>
-                                </td>
-                                </tr>
-                            @endforeach
                             </tbody>
                         </table>
-                    </div>
-                    <div class ="row">
-                        <div class="mx-auto">
-                            {{$trackings->links()}}
-                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-        @foreach($trackings as $tracking)
-        <!-- Modal -->
         <div class="modal fade" id="id{{$tracking->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -104,7 +81,5 @@
                 </div>
             </div>
         </div>
-            @endforeach
     </div>
-
 @endsection
